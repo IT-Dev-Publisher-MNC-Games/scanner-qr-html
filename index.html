@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scanner</title>
+  </head>
+  <body>
+    <div style="width: 500px" id="reader"></div>
+
+    <script src="./html5-qrcode.min.js"></script>
+
+    <script>
+      var html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+        fps: 10,
+        qrbox: 250,
+      });
+
+      function onScanSuccess(decodedText, decodedResult) {
+        // Handle on success condition with the decoded text or result.
+        console.log(`Scan result: ${decodedText}`, decodedResult);
+
+        return redirectToURL(decodedText);
+        html5QrcodeScanner.clear();
+        // ^ this will stop the scanner (video feed) and clear the scan area.
+      }
+
+      html5QrcodeScanner.render(onScanSuccess);
+
+      function redirectToURL(param) {
+        // Ganti URL di bawah ini dengan URL yang ingin Anda arahkan
+        var redirectTo = param;
+        window.location.href = redirectTo;
+      }
+    </script>
+  </body>
+</html>
