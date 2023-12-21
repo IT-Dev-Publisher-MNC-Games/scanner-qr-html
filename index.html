@@ -17,10 +17,10 @@
       });
 
       function onScanSuccess(decodedText, decodedResult) {
-        stop()
+        
         // Handle on success condition with the decoded text or result.
         console.log(`Scan result: ${decodedText}`, decodedResult);
-        
+        html5QrcodeScanner.stop();
         return redirectToURL(decodedText);
         html5QrcodeScanner.clear();
         // ^ this will stop the scanner (video feed) and clear the scan area.
